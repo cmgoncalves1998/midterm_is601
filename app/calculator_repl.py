@@ -9,6 +9,8 @@ from app.calculator import Calculator
 from app.exceptions import OperationError, ValidationError
 from app.history import AutoSaveObserver, LoggingObserver
 from app.operations import OperationFactory
+from colorama import Fore, Style, init
+init(autoreset=True)
 
 
 def calculator_repl():
@@ -26,7 +28,7 @@ def calculator_repl():
         calc.add_observer(LoggingObserver())
         calc.add_observer(AutoSaveObserver(calc))
 
-        print("Calculator started. Type 'help' for commands.")
+        print(Fore.YELLOW + "Calculator started. Type 'help' for commands." + Style.RESET_ALL)
 
         while True:
             try:
@@ -131,13 +133,15 @@ def calculator_repl():
                         if isinstance(result, Decimal):
                             result = format(result, "f").rstrip("0").rstrip(".")
 
+                        print(Fore.GREEN + f"\nResult: {result}" + Style.RESET_ALL)
                         print(f"\nResult: {result}")
+                       
                     except (ValidationError, OperationError) as e:
                         # Handle known exceptions related to validation or operation errors
-                        print(f"Error: {e}")
+                        print(Fore.RED + f"Error: {e}" + Style.RESET_ALL)
                     except Exception as e:
                         # Handle any unexpected exceptions
-                        print(f"Unexpected error: {e}")
+                        print(Fore.RED + f"Unexpected error: {e}" + Style.RESET_ALL)
                     continue
 
                 # Handle unknown commands
