@@ -315,6 +315,12 @@ class OperationFactory:
         'int_divide': IntegerDivision,
         'percent': Percentage,
         'abs_diff': AbsoluteDifference,
+        # aliases for class-name lookups
+        'percentage': Percentage,
+        'Modulus': Modulus,
+        'IntegerDivision': IntegerDivision,
+        'Percentage': Percentage,
+        'AbsoluteDifference': AbsoluteDifference,
     }
 
     @classmethod
