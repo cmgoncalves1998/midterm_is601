@@ -8,6 +8,7 @@ Command-line calculator with:
 - Observer-based logging + optional auto-save
 - Configuration via `.env` + `python-dotenv`
 - Unit tests with **90%+ coverage** and GitHub Actions 
+- Color coding for Outputs
 
 ---
 
